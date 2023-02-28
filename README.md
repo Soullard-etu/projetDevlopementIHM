@@ -2,7 +2,7 @@
 Jeu de Belote avec les vraies règles 
 
 # Technologies utilisées 
-Python et tkinter pour l'interface graphique
+Python(back) et tkinter pour l'interface graphique
 
 # Créateurs et rôles attribués
  
