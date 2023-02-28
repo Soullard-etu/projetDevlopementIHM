@@ -1,0 +1,2 @@
+class Manche:
+    1
