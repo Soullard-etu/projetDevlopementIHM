@@ -1,11 +1,11 @@
 class Cartes:
     atout = False
-    name = 0
+    nom = 0
     valeur = 0
     couleur = ""
 
-    def __init__(self, name, valeur, couleur):
-        self.name = name
+    def __init__(self, nom, valeur, couleur):
+        self.nom = nom
         self.valeur = valeur
         self.couleur = couleur
 
@@ -13,18 +13,22 @@ class Cartes:
         if self.atout == False:
             self.atout = True
 
-            if self.name == 9:
+            if self.nom == 9:
                 self.valeur = 14
 
-            elif self.name == 11:
+            elif self.nom == 11:
                 self.valeur = 20
 
     def removeAtout(self):
         if self.atout == True:
             self.atout = False
 
-            if self.name == 9:
+            if self.nom == 9:
                 self.valeur = 0
                 
-            elif self.name == 11:
+            elif self.nom == 11:
                 self.valeur = 2
+    
+    def __str__(self):
+        return str(self.atout) + "," + self.couleur + "," + str(self.nom) + "," + str(self.valeur)
+
