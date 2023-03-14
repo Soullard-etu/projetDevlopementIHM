@@ -7,8 +7,8 @@ Python(back) et tkinter pour l'interface graphique
 # Créateurs et rôles attribués
  
  ### Brunel Axel 
- Chef de projet et responsable de la cohésion d'équipe (et aussi de l'interface graphique avec tkinter)
+ S'occupe de la partie graphique et web
  ### Soullard Ange-Marie 
  Codage du jeu en python 
  ### Leculier Lucas 
-Couteau suisse 
+ Chef et Couteau suisse 
