@@ -1,15 +1,14 @@
 import random
-import paquetCartes
-from Cartes import Cartes
-from Joueur import Joueur
-from Manche import Manche
-from Annonce import Annonce
+from classes.paquetCartes import paquet
+from classes.Joueur import Joueur
+from classes.Manche import Manche
+from classes.Annonce import Annonce
 
 class Partie:
     pointMax = 2000
     point_E1_E2 = [int]*2
     joueursPartie = [Joueur]*4
-    paquetCarte = paquetCartes.paquet
+    paquetCarte = paquet
     annonce = Annonce
     manche = Manche
     joueurPartance = 0
@@ -19,7 +18,7 @@ class Partie:
         for i in range(4):
             self.joueursPartie[i] = jrs[i]
         
-        self.annonce = Annonce()
+        self.annonce = Annonce(self.joueurPartance, jrs)
         self.manche = Manche()
 
         self.point_E1_E2[0] = 0
@@ -43,12 +42,12 @@ class Partie:
         random.shuffle(self.paquetCarte)
 
         #on distribue
-        i = 0
-        j = 0
-        k = 0
+        i = 0   # parcourir les joueurs
+        j = 0   # parcourir le paquet
+        k = 0   # parcourir le paquet
         for i in range(4):
             for j in range(8):
-                self.joueursPartie[i].main[j] = self.paquetCarte[j+k]
+                self.joueursPartie[i].setCartes(self.paquetCarte[j+k])
             k += 8
         
     def setAtout(self, couleur):
@@ -60,7 +59,7 @@ class Partie:
         
     def startJeu(self):
         # debut de la manche 
-        while(self.point1<self.pointMax and self.point2<self.pointMax):
+        while(self.point_E1_E2[0]<self.pointMax and self.point_E1_E2[1]<self.pointMax):
             # annonce
             condition = True
             while condition:
@@ -70,7 +69,7 @@ class Partie:
                 # distribution carte 
                 self.distribuCartes()
 
-                condition = self.annonce.start(partance, self.joueursPartie)   
+                condition = self.annonce.start()   
                 
             
             joueurRemportantLannonce = self.annonce.getDernierParler()
@@ -118,3 +117,4 @@ class Partie:
 
             # set point 
             self.point_E1_E2 += pointDeLaManche
+

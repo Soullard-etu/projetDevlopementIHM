@@ -1,4 +1,4 @@
-from Cartes import Cartes
+from classes.Cartes import Cartes
 
 
 paquet = [Cartes]*32

@@ -1,4 +1,4 @@
-from Joueur import Joueur
+from classes.Joueur import Joueur
 
 class Annonce:
     couleurChoisi = ""
@@ -99,3 +99,5 @@ class Annonce:
             return True
         else:   
             return False
+        
+

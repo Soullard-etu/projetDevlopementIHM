@@ -1,4 +1,4 @@
-from Joueur import Joueur
+from classes.Joueur import Joueur
 
 class Plit:
     pointE1 = 0

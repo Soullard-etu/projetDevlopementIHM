@@ -1,5 +1,5 @@
-from Plit import Plit
-from Joueur import Joueur
+from classes.Plit import Plit
+from classes.Joueur import Joueur
 
 class Manche:
     atout = ""
@@ -7,17 +7,16 @@ class Manche:
     plt = Plit
     point_E1_E2 = [int]*2
     joueurPartie = [Joueur]*4
-
-    def __init__(self, atout, valeur, partance, joueurPartie):
-        self.atout = atout
-        self.valeur = valeur
-        self.joueurPartie = joueurPartie
-        self.plt = Plit(partance, joueurPartie)
     
     def getPoint_E1_E2(self):
         return self.point_E1_E2
 
-    def start(self):
+    def start(self, atout, valeur, contrer, partance, joueurPartie):
+        self.atout = atout
+        self.valeur = valeur
+        self.joueurPartie = joueurPartie
+        self.plt = Plit(partance, joueurPartie)
+
         for i in range(8):
             self.plt.start()
         
