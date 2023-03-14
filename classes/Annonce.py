@@ -7,6 +7,7 @@ class Annonce:
     contrer = False
     partance = 0
     dernierParler = ""
+    nombreDePasse = 0
     listJoueurs = [Joueur]*4
 
     def __init__(self, partance, jrs) -> None:
@@ -26,7 +27,7 @@ class Annonce:
         return self.dernierParler
     
     def parle(self, j):
-        valeur = self.valeurChoisi
+        valeur = 0
         couleur = ""
         contrer = False
         passe = False
@@ -35,37 +36,58 @@ class Annonce:
         # clic sur le btn passe => passe = true
 
 
-        #recuperer valeur, couleur choisi sur interface
+        # clic sur le btn contre => contre = true
+        
+
+        # si valeur et couleur select et clic btn valider
+            #recuperer valeur, couleur choisi sur interface
 
 
-        # ou si contrer
+
+        # teste 
+        print("a vous de parler")
+        print("annonce possible :")
+        print(self.valeur)
+
+        if self.valeurChoisi != 0:
+            print("valeur de la derniere annonce faite")
+            print(self.valeurChoisi)
+            valeur = int(input("si passe 1 | si contre 2 sinon valeur de lannonce"))
+        else:
+            valeur = int(input("si passe 1 | sinon valeur de lannonce"))
 
 
+        if valeur == 1:
+            passe = True
+        elif valeur == 2:
+            contrer = True
+        else:
+            couleur = input("couleur de lannonce")
+        # fin teste
 
-        if passe == False:
+
+        if passe:
+            self.nombreDePasse += 1
+            
+        elif contrer:
+            self.contrer = True
+        
+        else:
             #set valchoisi, couleur
             self.valeurChoisi = valeur
             self.couleurChoisi = couleur
-
-        elif contrer:
-            self.contrer = True
-
-        return valeur
+            self.dernierParler = j.nom
+            self.nombreDePasse = 0
+            
     
+
     def start(self):
         i=self.partance
-        nombreDePasse=0
-        valeur = 0
-
 
         #lannonce sarrete si : capo annonce, contrer, 4 passe au debut, annonce et 3 passe
-        while valeur != 500 and self.contrer != True and (nombreDePasse == 4 and valeur == 0) and (nombreDePasse == 3 and valeur != 0):
+        while self.valeurChoisi != 500 and self.contrer != True and (self.nombreDePasse == 4 and self.valeurChoisi == 0) and (self.nombreDePasse == 3 and self.valeurChoisi != 0):
             # penser a remettre passe a 0 si annonce
-            
-            valeur = self.parle(self.listJoueurs[i])
-            
-            self.dernierParler = self.listJoueurs[i].nom
-
+            self.parle(self.listJoueurs[i])
 
             if i < 3:
                 i += 1
@@ -73,7 +95,7 @@ class Annonce:
                 i = 0
         
 
-        if valeur == 0: # personne a parler on recomence une annonce
+        if self.valeurChoisi == 0: # personne a parler on recomence une annonce
             return True
         else:   
             return False
