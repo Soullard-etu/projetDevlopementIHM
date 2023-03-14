@@ -53,6 +53,7 @@ class Annonce:
             print("valeur de la derniere annonce faite")
             print(self.valeurChoisi)
             valeur = int(input("si passe 1 | si contre 2 sinon valeur de lannonce"))
+            
         else:
             valeur = int(input("si passe 1 | sinon valeur de lannonce"))
 
@@ -84,9 +85,12 @@ class Annonce:
     def start(self):
         i=self.partance
 
+        print("dans lannonce")
+
         #lannonce sarrete si : capo annonce, contrer, 4 passe au debut, annonce et 3 passe
-        while self.valeurChoisi != 500 and self.contrer != True and (self.nombreDePasse == 4 and self.valeurChoisi == 0) and (self.nombreDePasse == 3 and self.valeurChoisi != 0):
+        while self.valeurChoisi != 500 and self.contrer != True and not (self.nombreDePasse == 4 and self.valeurChoisi == 0) and not (self.nombreDePasse == 3 and self.valeurChoisi != 0):
             # penser a remettre passe a 0 si annonce
+            print("  dans la boucle")
             self.parle(self.listJoueurs[i])
 
             if i < 3:

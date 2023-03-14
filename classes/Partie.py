@@ -59,8 +59,10 @@ class Partie:
         
     def startJeu(self):
         # debut de la manche 
+        print("go")
         while(self.point_E1_E2[0]<self.pointMax and self.point_E1_E2[1]<self.pointMax):
             # annonce
+            print("dans la boucle")
             condition = True
             while condition:
                  # modification partance
