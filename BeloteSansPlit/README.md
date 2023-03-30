@@ -1,3 +1,2 @@
 # projetDevlopementIHM
-Jeu de belote
-back python
+By Soullard
